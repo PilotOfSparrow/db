@@ -1,0 +1,94 @@
+CONNECT 'D:\Datbase\bank.fdb' user 'SYSDBA' password 'masterkey';
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) VALUES (1, 'Greg', 'Vachovsky', '23.3.1967', 666777);
+INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) VALUES (2, 'Andry', 'Blaskovic', '13.6.1973', 666888);
+INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) VALUES (3, 'Pinguin', 'Kavalsky', '14.12.1956', 666999);
+INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) VALUES (4, 'Lovely', 'Caezar', '1.10.1999', 666111);
+INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) VALUES (5, 'Dude', 'Some', '22.2.1993', 666222);
+END ^
+
+set term ; ^
+
+SELECT * FROM client;
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO groups (group_id) VALUES (1);
+INSERT INTO groups (group_id) VALUES (2);
+INSERT INTO groups (group_id) VALUES (3);
+INSERT INTO groups (group_id) VALUES (4);
+INSERT INTO groups (group_id) VALUES (5);
+END ^
+
+set term ; ^
+
+SELECT * FROM groups;
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO access_type (accesstype_id, accesstype_type) VALUES (1, 'only_client');
+INSERT INTO access_type (accesstype_id, accesstype_type) VALUES (2, 'only_group');
+INSERT INTO access_type (accesstype_id, accesstype_type) VALUES (3, 'client_and_other_client');
+INSERT INTO access_type (accesstype_id, accesstype_type) VALUES (4, 'client_and_other_group');
+INSERT INTO access_type (accesstype_id, accesstype_type) VALUES (5, 'list_of_clients');
+END ^
+
+set term ; ^
+
+SELECT * FROM access_type;
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO deposit_box (depb_id, depb_num, depb_value) VALUES (1, 1, 123.456);
+INSERT INTO deposit_box (depb_id, depb_num, depb_value) VALUES (2, 2, 5.123);
+INSERT INTO deposit_box (depb_id, depb_num, depb_value) VALUES (3, 3, 4444);
+INSERT INTO deposit_box (depb_id, depb_num, depb_value) VALUES (4, 4, 0);
+INSERT INTO deposit_box (depb_id, depb_num, depb_value) VALUES (5, 5, 14);
+END ^
+
+set term ; ^
+
+SELECT * FROM deposit_box;
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO group_member (gm_id, group_id, client_id) VALUES (1, 1, 1);
+INSERT INTO group_member (gm_id, group_id, client_id) VALUES (2, 1, 2);
+INSERT INTO group_member (gm_id, group_id, client_id) VALUES (3, 3, 3);
+INSERT INTO group_member (gm_id, group_id, client_id) VALUES (4, 4, 4);
+INSERT INTO group_member (gm_id, group_id, client_id) VALUES (5, 5, 5);
+END ^
+
+set term ; ^
+
+SELECT * FROM group_member;
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id) VALUES (1, '24.11.2017', '1.12.2022', 7000.45, 1, 1, 1);
+INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id) VALUES (2, '2.1.2000', '12.3.2028', 12, 2, 2, 2);
+INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id) VALUES (3, '4.12.2003', '22.1.2019', 366, 3, 3, 3);
+INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id) VALUES (4, '11.11.2006', '1.12.2067', 566, 4, 4, 4);
+INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id) VALUES (5, '24.11.2007', '1.12.2032', 70, 5, 5, 5);
+END ^
+
+set term ; ^
+
+SELECT * FROM contract;
+
+set term ^ ;
+EXECUTE BLOCK AS BEGIN
+INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id) VALUES (1, 1, 56.17, 3333, 1, 1);
+INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id) VALUES (2, 2, 56.17, 3333, 2, 2);
+INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id) VALUES (3, 3, 56.17, 3333, 3, 3);
+INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id) VALUES (4, 4, 56.17, 3333, 4, 4);
+INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id) VALUES (5, 5, 56.17, 3333, 5, 5);
+END ^
+
+set term ; ^
+
+SELECT * FROM box_history;
+
+commit;
