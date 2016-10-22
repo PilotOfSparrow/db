@@ -3,25 +3,52 @@ commit;
 
 CONNECT 'D:\Datbase\bank.fdb' user 'SYSDBA' password 'masterkey';
 
-CREATE TABLE access_type (accesstype_id int not null primary key, accesstype_type varchar(128) not null unique);
+CREATE TABLE access_type (
+	accesstype_id int not null primary key,
+	accesstype_type varchar(128) not null unique);
+	
 commit;
 
 CREATE TABLE groups (group_id int not null primary key);
 commit;
 
-CREATE TABLE client (client_id int not null primary key, client_name varchar(128) not null, client_lastname varchar(128) not null, client_dob timestamp not null, client_passport int not null unique);
+CREATE TABLE client (
+	client_id int not null primary key,
+	client_name varchar(128) not null, 
+	client_lastname varchar(128) not null,
+	client_dob timestamp not null,
+	client_passport int not null unique);
 commit;
 
-CREATE TABLE deposit_box (depb_id int not null primary key, depb_num int not null unique, depb_value float);
+CREATE TABLE deposit_box (
+	depb_id int not null primary key,
+	depb_num int not null unique,
+	depb_value float);
 commit;
 
-CREATE TABLE group_member (gm_id int not null primary key, group_id int references groups, client_id int references client);
+CREATE TABLE group_member (
+	gm_id int not null primary key,
+	group_id int references groups, 
+	client_id int references client);
 commit;
 
-CREATE TABLE contract (contract_id int not null primary key, contract_start timestamp not null, contract_end timestamp not null, contract_cost float not null, depb_id int references deposit_box, accesstype_id int references access_type, group_id int references groups);
+CREATE TABLE contract (
+	contract_id int not null primary key,
+	contract_start timestamp not null,
+	contract_end timestamp not null,
+	contract_cost float not null,
+	depb_id int references deposit_box,
+	accesstype_id int references access_type,
+	group_id int references groups);
 commit;
 
-CREATE TABLE box_history (history_id int not null primary key, client_id int references client, history_previousValue float, history_currentValue float, depb_id int references deposit_box, contract_id int references contract);
+CREATE TABLE box_history (
+	history_id int not null primary key,
+	client_id int references client,
+	history_previousValue float,
+	history_currentValue float,
+	depb_id int references deposit_box,
+	contract_id int references contract);
 commit;
 
 SHOW TABLES;

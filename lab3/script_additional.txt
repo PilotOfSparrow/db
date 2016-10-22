@@ -1,0 +1,10 @@
+INSERT INTO access_type (accesstype_id, accesstype_type) 
+				 VALUES (6, 'with_specific_client_only');
+			
+INSERT INTO access_type (accesstype_id, accesstype_type) 
+				 VALUES (7, 'min_amount_of_clients');
+				 
+ALTER TABLE deposit_box ADD depb_type_of_value varchar(128);
+
+ALTER TABLE box_history ADD history_previous_object_type varchar(128);
+ALTER TABLE box_history ADD history_current_object_type varchar(128);
