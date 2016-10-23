@@ -1,0 +1,1 @@
+CREATE VIEW CombWithGrBy AS SELECT client_name AS Name, COUNT(client_name) FROM client group by client_name;

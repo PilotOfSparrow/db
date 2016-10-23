@@ -1,0 +1,1 @@
+DELETE FROM contract WHERE contract_cost=(SELECT MAX(contract_cost) FROM contract);

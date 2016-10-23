@@ -1,0 +1,13 @@
+CREATE VIEW ClientComplite AS SELECT * FROM client;
+
+CREATE VIEW GroupsComplite AS SELECT * FROM groups;
+
+CREATE VIEW AccessTypeComplite AS SELECT * FROM access_type;
+
+CREATE VIEW DepBoxComplite AS SELECT * FROM deposit_box;
+
+CREATE VIEW GrMemberComplite AS SELECT * FROM group_member;
+
+CREATE VIEW ContractComplite AS SELECT * FROM contract;
+
+CREATE VIEW BoxHistComplite AS SELECT * FROM box_history;

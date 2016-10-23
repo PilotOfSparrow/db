@@ -1,0 +1,102 @@
+SET term # ;
+CREATE PROCEDURE insert_client (
+	client_id int, 
+	client_name varchar(128), 
+	client_lastname varchar(128),
+	client_dob timestamp,
+	client_passport int) 
+	AS
+	BEGIN
+		INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) 
+				VALUES (:client_id, :client_name, :client_lastname, :client_dob, :client_passport);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #
+
+SET term # ;
+CREATE PROCEDURE insert_group (group_id int) 
+	AS
+	BEGIN
+		INSERT INTO groups (group_id) 
+				VALUES (:group_id);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #
+
+SET term # ;
+CREATE PROCEDURE insert_deposit_box (
+	depb_id int,
+	depb_num int,
+	depb_value float,
+	depb_type_of_value varchar(128)) 
+	AS
+	BEGIN
+		INSERT INTO deposit_box (depb_id, depb_num, depb_value, depb_type_of_value)
+				VALUES (:depb_id, :depb_num, :depb_value, :depb_type_of_value);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #
+
+SET term # ;
+CREATE PROCEDURE insert_group_member (
+	gm_id int,
+	group_id int, 
+	client_id int) 
+	AS
+	BEGIN
+		INSERT INTO group_member (gm_id, group_id, client_id)
+				VALUES (:gm_id, :group_id, :client_id);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #
+
+SET term # ;
+CREATE PROCEDURE insert_contract (
+	contract_id int,
+	contract_start timestamp,
+	contract_end timestamp,
+	contract_cost float,
+	depb_id int,
+	accesstype_id int,
+	group_id int) 
+	AS
+	BEGIN
+		INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id)
+				VALUES (:contract_id, :contract_start, :contract_end, :contract_cost, :depb_id, :accesstype_id, :group_id);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #
+
+SET term # ;
+CREATE PROCEDURE insert_box_history (
+	history_id int,
+	client_id int,
+	history_previousValue float,
+	history_currentValue float,
+	depb_id int,
+	contract_id int) 
+	AS
+	BEGIN
+		INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id)
+				VALUES (:history_id, :client_id, :history_previousValue, :history_currentValue, :depb_id, :contract_id);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #

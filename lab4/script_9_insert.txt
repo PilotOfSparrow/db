@@ -1,0 +1,16 @@
+INSERT INTO client (client_id, client_name, client_lastname, client_dob, client_passport) 
+	VALUES (900000, 'Vasiliy', 'Burda', '23.3.1976', 444777);
+	
+INSERT INTO groups (group_id) VALUES (900000);
+
+INSERT INTO deposit_box (depb_id, depb_num, depb_value, depb_type_of_value) 
+	VALUES (900000, 300000, 8888.8888, 'love');
+	
+INSERT INTO group_member (gm_id, group_id, client_id) 
+	VALUES (900000, 900000, 900000);
+	
+INSERT INTO contract (contract_id, contract_start, contract_end, contract_cost, depb_id, accesstype_id, group_id) 
+	VALUES (900000, '24.11.2017', '1.12.2022', 70000.045, 900000, 1, 900000);
+		
+INSERT INTO box_history (history_id, client_id, history_previousValue, history_currentValue, depb_id, contract_id) 
+	VALUES (900000, 900000, 0, 8888.8888, 900000, 900000);

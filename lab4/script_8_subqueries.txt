@@ -1,0 +1,4 @@
+CREATE VIEW SubquClName AS SELECT client_name 
+	FROM client 
+	WHERE client_id 
+	IN (SELECT contract_id FROM box_history WHERE client.client_id=box_history.client_id);

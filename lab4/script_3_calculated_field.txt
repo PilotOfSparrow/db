@@ -1,0 +1,1 @@
+CREATE VIEW CalcField AS SELECT client_id, client_name AS whoisit_calc_f FROM client WHERE client_id BETWEEN 2 AND 30;

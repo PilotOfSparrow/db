@@ -1,0 +1,11 @@
+SET term # ;
+CREATE PROCEDURE delete_max_cost_contract 
+	AS
+	BEGIN
+		DELETE FROM contract WHERE contract_cost=(SELECT MAX(contract_cost) FROM contract);
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #

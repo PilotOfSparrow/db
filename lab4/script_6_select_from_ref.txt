@@ -1,0 +1,9 @@
+CREATE VIEW SelRefClCn AS SELECT client_name, contract_cost 
+	FROM client, contract, groups, group_member 
+	WHERE groups.group_id=group_member.group_id 
+	AND group_member.client_id=client.client_id;
+	
+CREATE VIEW SelRefDepBHis AS SELECT deposit_box.depb_id, history_previousValue 
+	FROM box_history, deposit_box 
+	WHERE deposit_box.depb_id=box_history.depb_id
+	AND box_history.history_previousValue < 1000;

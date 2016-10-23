@@ -1,0 +1,1 @@
+CREATE VIEW MultSelect AS SELECT * FROM client ORDER BY client_lastname ASC, client_dob DESC;

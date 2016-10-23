@@ -1,0 +1,1 @@
+CREATE VIEW CalcMultCharct AS SELECT MAX(contract_cost) AS HighestPrice, AVG(accesstype_id) AS AverageTypeOfAccess FROM contract;

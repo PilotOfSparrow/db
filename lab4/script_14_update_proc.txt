@@ -1,0 +1,14 @@
+SET term # ;
+CREATE PROCEDURE update_name (
+	client_id int, 
+	client_name varchar(128),
+	client_new_name varchar(128)) 
+	AS
+	BEGIN
+		UPDATE client SET client_name=:client_new_name WHERE client_name=:client_name AND client_id=:client_id;
+				
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #

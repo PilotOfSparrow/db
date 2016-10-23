@@ -1,0 +1,1 @@
+UPDATE client SET client_name='Ivan' WHERE client_name='Greg' AND client_id=1;

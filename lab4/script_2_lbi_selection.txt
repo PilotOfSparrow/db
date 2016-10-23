@@ -1,0 +1,17 @@
+CREATE VIEW NamesWithAn AS SELECT * FROM client WHERE client_lastname LIKE 'An%';
+
+CREATE VIEW GroupsEndsOn23 AS SELECT * FROM groups WHERE group_id LIKE '%23';
+
+CREATE VIEW BoxValueEndsOn223 AS SELECT * FROM deposit_box WHERE depb_value LIKE '%223';
+
+CREATE VIEW SpecificPassportRange AS SELECT * FROM client WHERE client_passport BETWEEN 100000 AND 100200;
+
+CREATE VIEW SpecificGroupMemberRange AS SELECT * FROM group_member WHERE client_id BETWEEN 99000 AND 100000;
+
+CREATE VIEW SpecificBoxHistoryRange AS SELECT * FROM box_history WHERE history_previousValue BETWEEN 9700 AND 10000;
+
+CREATE VIEW AllAlAndVic AS SELECT * FROM client WHERE client_name IN ('Alexander', 'Victor');
+
+CREATE VIEW SpesificPreviousValue AS SELECT * FROM box_history WHERE history_previousValue IN (10981.538, 8269.8896);
+
+CREATE VIEW RangeOfDebBox AS SELECT * FROM deposit_box WHERE depb_id IN (7, 75555);

@@ -1,4 +1,4 @@
-CONNECT 'D:\Datbase\bank.fdb' user 'SYSDBA' password 'masterkey';
+CONNECT 'D:\database\bank.fdb' user 'SYSDBA' password 'masterkey';
 
 set term ^ ;
 EXECUTE BLOCK AS BEGIN
