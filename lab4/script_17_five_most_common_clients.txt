@@ -1,0 +1,36 @@
+SET term # ;
+CREATE PROCEDURE show_five_most_common_clients(
+	start_from timestamp,
+	end_on timestamp)
+	AS
+	BEGIN
+		CREATE VIEW CLIENTS_IN_ACCESS_TYME_RANGE 
+			SELECT 
+				client.client_id, 
+				client.client_name, 
+				client.client_lastname, 
+				box_history.time_of_access, 
+				COUNT(client.client_id) AS Num_of_Acc
+			FROM box_history, client 
+			WHERE box_history.time_of_access BETWEEN :start_from AND :end_on
+			GROUP by client.client_id, client.client_name, 
+					 client.client_lastname, box_history.time_of_access;
+				
+			SELECT FIRST 5
+				client.client_name AS Name, 
+				client.client_lastname AS Lastname,
+				Num_of_Acc
+			FROM CLIENTS_IN_ACCESS_TYME_RANGE
+			ORDER BY Num_of_Acc;
+			
+			DROP VIEW CLIENTS_IN_ACCESS_TYME_RANGE;
+			
+	  BEGIN
+		SUSPEND;
+	  END
+	END#
+SET term ; #
+
+WHERE box_history.time_of_access between '22.01.08 11:36:19' AND '22.04.2008 11:36:19'
+
+connect 'C:\Users\Sir Lskyp\Desktop\DB\bank.fdb' user 'SYSDBA' password 'masterkey';
