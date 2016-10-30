@@ -1,10 +1,29 @@
+ALTER TABLE ACCESS_TYPE ADD access_min_num int DEFAULT 1 not null;
+
+ALTER TABLE contract ADD client_id int REFERENCES client;
+
 INSERT INTO access_type (accesstype_id, accesstype_type) 
 				 VALUES (6, 'with_specific_client_only');
 			
 INSERT INTO access_type (accesstype_id, accesstype_type) 
 				 VALUES (7, 'min_amount_of_clients');
 				 
-ALTER TABLE deposit_box ADD depb_type_of_value varchar(128);
 
-ALTER TABLE box_history ADD history_previous_object_type varchar(128);
-ALTER TABLE box_history ADD history_current_object_type varchar(128);
+CREATE TABLE item (
+	item_id int not null PRIMARY KEY, 
+	item_type varchar(128) not null, 
+	item_value float not null, 
+	depb_id int references DEPOSIT_BOX); 
+				 
+ALTER TABLE BOX_HISTORY ADD item_id int references ITEM;
+
+
+CREATE TABLE tmp_group (tmp_group_id int not null primary key);
+
+CREATE TABLE tmp_group_member (
+	tmp_gm_id int not null primary key references tmp_group, 
+	gm_id int not null references group_member);
+	
+ALTER TABLE BOX_HISTORY ADD access_group_id int not null references tmp_group;
+
+ 
