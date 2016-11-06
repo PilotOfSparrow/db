@@ -1,0 +1,4 @@
+DELETE FROM access_type
+WHERE NOT EXISTS (SELECT *
+                    FROM contract
+                    WHERE contract.accesstype_id = access_type.accesstype_id);
