@@ -1,7 +1,7 @@
-CREATE DATABASE 'D:\datbase\bank.fdb' user 'SYSDBA' password 'masterkey';
+CREATE DATABASE 'D:\database\bank.fdb' user 'SYSDBA' password 'masterkey';
 commit;
 
-CONNECT 'D:\Datbase\bank.fdb' user 'SYSDBA' password 'masterkey';
+CONNECT 'D:\Database\bank.fdb' user 'SYSDBA' password 'masterkey';
 
 CREATE TABLE access_type (
 	accesstype_id int not null primary key,

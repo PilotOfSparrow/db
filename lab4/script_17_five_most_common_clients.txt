@@ -33,4 +33,4 @@ WHERE box_history.time_of_access BETWEEN :start_from AND :end_on
 
 WHERE box_history.time_of_access between '21.04.08 11:36:19' AND '22.04.2008 11:36:19'
 
-connect 'C:\Users\Sir Lskyp\Desktop\DB\bank.fdb' user 'SYSDBA' password 'masterkey';
+connect 'D:\database\bank.fdb' user 'SYSDBA' password 'masterkey';
