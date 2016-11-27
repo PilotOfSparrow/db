@@ -1,6 +1,6 @@
 SET TERM ^ ;
 
-create or alter procedure NEW_PROCEDURE
+create or alter procedure SORTING_PROC
 returns (
     CL_ID integer,
     ITEM varchar(128),
